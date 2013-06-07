@@ -1,0 +1,22 @@
+# Enable the use of macros
+set macros
+
+_miafunza(x)= x< 5./6 ? 2./3 - 4./5*x: 1- (x-5./6)
+_laltrafunza(x)=x**0.4
+PRAINBOWG = 'set palette model HSV functions _miafunza(gray), 1 , _laltrafunza(gray)'
+
+PBLUERED2 = 'set palette model RGB defined (0 "#023858", 0.25 "#0570B0", 0.5 "#74A9CF", 0.85 "#D0D1E6",  1 "#FFF7FB", 1 "#FFF7EC", 1.25 "#FDD49E" ,1.5 "#FC8D59", 1.75 "#D7301F", 2 "#7F0000")'
+
+PCOLDBHOT = 'set palette model RGB defined (0 "white", 0.25 "cyan", 0.625 "blue", 1 "black", 1.375 "red", 1.75 "yellow", 2 "white")'
+
+PCOLDWHOT = 'set palette model RGB defined (0 "black", 0.15 "blue", 0.85 "cyan", 1 "white", 1.15 "yellow", 1.85 "red", 2 "black")'
+
+PBCOLD = 'set palette model RGB defined (0 "black", 0.15 "blue", 0.85 "cyan", 1 "white")'
+
+PBHOT = 'set palette model RGB defined (0 "black", 0.15 "red", 0.85 "yellow", 1 "white")'
+
+PWCOLD = 'set palette model RGB defined (0 "white", 0.15 "cyan", 0.85 "blue", 1 "black")'
+
+PWHOT = 'set palette model RGB defined (0 "white", 0.15 "yellow", 0.85 "red", 1 "black")'
+
+

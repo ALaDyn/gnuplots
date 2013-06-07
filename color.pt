@@ -1,0 +1,23 @@
+#!/gnuplot
+FILE_IN_1='ump_field_50.0000_By'
+#FILE_IN_1='SLICE_my-e-30.0_ZX'
+FILE_OUT='several-By-50.eps'
+set terminal postscript enhanced eps color "Helvetica" 20
+set output FILE_OUT
+set title 'B_y'
+set ylabel 'x' 
+set xlabel 'z'
+set cblabel 'TV/m'
+set xrange [-20:20]
+set yrange [-20:20]
+#set cbrange [-5:5]
+#set xtics 45
+#set ytics 1
+#set palette model RGB defined (0 "white", 0.25 "cyan", 0.625 "blue", 1 "black", 1.375 "red", 1.75 "yellow", 2 "white")
+#set palette model RGB defined (0 "black", 0.15 "blue", 0.85 "cyan", 1 "white", 1.15 "yellow", 1.85 "red", 2 "black")
+set palette model RGB defined (0 "#023858", 0.25 "#0570B0", 0.5 "#74A9CF", 0.85 "#D0D1E6",  1 "#FFF7FB", 1 "#FFF7EC", 1.25 "#FDD49E" ,1.5 "#FC8D59", 1.75 "#D7301F", 2 "#7F0000")
+#set palette model RGB defined (0 "blue", 1 "white", 2 "red")
+#set palette rgbformulae 7,5,15
+#set logscale cb
+#set format cb "%L10^{%L}"
+plot FILE_IN_1 u (-$1):2:3 w image t ''
