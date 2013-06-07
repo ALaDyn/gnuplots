@@ -1,4 +1,4 @@
-
+#!/gnuplot
 
 FILE_OUT='elec-prot-density-15-30.eps'
 set terminal postscript enhanced eps color "Helvetica" 16
