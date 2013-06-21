@@ -1,3 +1,4 @@
+#!/gnuplot
 FILE_IN_1='ump_field_50.0000_By'
 
 spessore=4
