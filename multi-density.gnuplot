@@ -1,6 +1,6 @@
 #!/gnuplot
 
-FILE_OUT='elec-prot-density-15-30.eps'
+FILE_OUT='elec-prot-density-4-8.eps'
 set terminal postscript enhanced eps color "Helvetica" 16
 set output FILE_OUT
 
@@ -10,7 +10,7 @@ set tics scale 0.5
 
 
 set ylabel 'y [{/Symbol l}_0]' 
-set xrange [10:40]
+set xrange [15:25]
 set logscale cb
 set cbrange [0.001:1]
 #set format cb "%L10^{%L}"
@@ -44,14 +44,14 @@ set multiplot layout 2,2
 #-----------PLOT elettroni-------------------
 unset colorbox #set colorbox user origin .75, .55 size 0.02, 0.3
 unset yrange
-set yrange [0:30]
+set yrange [0:10]
 set cblabel 'n_e [64 n_c]'
 @TMARGIN; @LMARGIN
 @NOXTICS; @YTICS
 @TLTITLE
 #set tmargin at screen 0.90; set bmargin at screen 0.55
 @PWHOT
-plot "Edenout05_out.2D" u 1:2:(abs($3)) w image t ''
+plot "Edenout02_out.2D" u 1:2:(abs($3)) w image t ''
 
 #----------PLOT protoni --------------------
 unset colorbox #set colorbox user origin .75, .2 size 0.02, 0.3
@@ -59,27 +59,27 @@ unset colorbox #set colorbox user origin .75, .2 size 0.02, 0.3
 @XTICS; @YTICS
 @BLTITLE
 set tmargin at screen 0.55; set bmargin at screen 0.20
-set yrange [30:0]
+set yrange [10:0]
 set cblabel 'n_p [64 n_c]'
 @PWCOLD
-plot "Pdenout05_out.2D" u 1:2:(abs($3)) w image t ''
+plot "Pdenout02_out.2D" u 1:2:(abs($3)) w image t ''
 
 
 #=========== second column ================
 unset xrange
-set xrange [10:50]
+set xrange [15:25]
 
 #-----------PLOT elettroni-------------------
 @TRTITLE
 set colorbox user origin .775, .575 size 0.02, 0.3
 unset yrange
-set yrange [0:30]
+set yrange [0:10]
 set cblabel 'n_e [64 n_c]'
 @TMARGIN; @RMARGIN
 @NOXTICS; @NOYTICS
 #set tmargin at screen 0.90; set bmargin at screen 0.55
 @PWHOT
-plot "Edenout10_out.2D" u 1:2:(abs($3)) w image t ''
+plot "Edenout04_out.2D" u 1:2:(abs($3)) w image t ''
 
 #----------PLOT protoni --------------------
 @BRTITLE
@@ -87,10 +87,10 @@ set colorbox user origin .775, .225 size 0.02, 0.3
 @BMARGIN; @RMARGIN
 @XTICS; @NOYTICS
 set tmargin at screen 0.55; set bmargin at screen 0.20
-set yrange [30:0]
+set yrange [10:0]
 set cblabel 'n_p [64 n_c]'
 @PWCOLD
-plot "Pdenout10_out.2D" u 1:2:(abs($3)) w image t ''
+plot "Pdenout04_out.2D" u 1:2:(abs($3)) w image t ''
 
 
 unset multiplot
