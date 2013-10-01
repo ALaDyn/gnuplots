@@ -31,6 +31,34 @@ PMATLAB = "set palette model RGB defined (0  0.0 0.0 0.5,\
 7  1.0 0.0 0.0,\
 8  0.5 0.0 0.0)"
 
+#***********MATLAB WITH BLACK COLOR SCALE****************
+PMATLAB_WBLACK = "set palette model RGB defined (\
+0  0.0 0.0 0.0,\
+0.001  0.0 0.0 0.0,\
+0.001  0.0 0.0 0.5,\
+1  0.0 0.0 1.0,\
+2  0.0 0.5 1.0,\
+3  0.0 1.0 1.0,\
+4  0.5 1.0 0.5,\
+5  1.0 1.0 0.0,\
+6  1.0 0.5 0.0,\
+7  1.0 0.0 0.0,\
+8  0.5 0.0 0.0)"
+
+#***********MATLAB WITH WHITE COLOR SCALE****************
+PMATLAB_WWHITE = "set palette model RGB defined (\
+0  1.0 1.0 1.0,\
+0.001  1.0 1.0 1.0,\
+0.001  0.0 0.0 0.2,\
+1  0.0 0.0 1.0,\
+2  0.0 0.5 1.0,\
+3  0.0 1.0 1.0,\
+4  0.5 1.0 0.5,\
+5  1.0 1.0 0.0,\
+6  1.0 0.5 0.0,\
+7  1.0 0.0 0.0,\
+8  0.5 0.0 0.0)"
+
 #***********HEATMAP COLOR SCALE****************
 PHEATMAP = "set palette model RGB defined( \
 0       0.2314  0.2980  0.7529, \
