@@ -159,10 +159,14 @@ PBACK2BACK = "set palette model RGB defined ( -1 'white', 0 'blue', 0 'red', 1 '
 #***********LUMINANCE  COLOR SCALE****************
 auxiliary_luminance_green = 1.0/3.0
 auxiliary_luminance_blue = 2.0/3.0
-PLUMINANCE = "set palette model HSV defined ( 0 auxiliary_luminance_blue 0.6 0.6, \
+PLUMINANCE = "set palette model HSV defined (0 auxiliary_luminance_blue 0.6 0.6, \
 1 auxiliary_luminance_blue 0.5 1, \
 2 auxiliary_luminance_green 0.5 1, \
 3 auxiliary_luminance_green 0.7 0.5 )"
+
+PRCF = "set palette model HSV defined (0 0.5 0.15 0.9, 0.4 auxiliary_luminance_blue 0.2 0.6,\
+1 auxiliary_luminance_blue 0.3 0.05)
+
 
 
 #***********from : GNUPLOT in action
