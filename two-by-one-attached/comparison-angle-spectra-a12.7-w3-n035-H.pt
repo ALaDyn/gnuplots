@@ -1,0 +1,105 @@
+FILE_OUT='comparison-angle-spectra-a12.7-w3-n035-H.eps'
+set terminal postscript enhanced eps color "Helvetica" 18
+set output FILE_OUT
+
+set style line 1 lt 1 lc rgb "black" lw 3
+set style line 2 lt 1 lc rgb "dark-red" lw 3
+set style line 3 lt 1 lc rgb "orange" lw 3
+#set style line 3 lt 1 lc rgb "yellow" lw 3
+set style line 4 lt 1 lc rgb "dark-green" lw 3
+set style line 5 lt 1 lc rgb "cyan" lw 3
+set style line 5 lt 1 lc rgb "blue" lw 3
+set style line 8 lt 1 lc rgb "violet" lw 3
+
+set mxtics 5
+set logscale y
+set xrange [0:40]
+set xtics 10
+set yrange [0.1:10000]
+
+set label 1 at screen 0.635, 0.96 center  '2D: {/Symbol z}=13.7 (contaminants: l=70nm, n_e=10n_c) a_0=12.7' font "Helvetica,20" front
+
+set label 2 at screen 1.16,0.725 rotate center 'CP' font "Helvetica,20" front
+set label 3 at screen 1.16,0.325 rotate center 'LP' font "Helvetica,20" front
+
+set size 1.2,1.05
+
+
+# Enable the use of macros
+set macros
+load "~/SORGENTI/gnuplots/palettes.pt"
+
+
+MARGIN00 = "set origin 0.15,0.54; set size 0.22,0.3; set size square; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+MARGIN10 = "set origin 0.40,0.54; set size 0.22,0.3; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+MARGIN20 = "set origin 0.65,0.54; set size 0.22,0.3; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+MARGIN30 = "set origin 0.90,0.54; set size 0.22,0.3; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+MARGIN01 = "set origin 0.15,0.16; set size 0.22,0.3; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+MARGIN11 = "set origin 0.40,0.16; set size 0.22,0.3; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+MARGIN21 = "set origin 0.65,0.16; set size 0.22,0.3; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+MARGIN31 = "set origin 0.90,0.16; set size 0.22,0.3; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+
+TITLE00  = "set title '{/Symbol q}<180{/Symbol \260}' "
+TITLE10  = "set title '{/Symbol q}<5{/Symbol \260}' "
+TITLE20  = "set title '{/Symbol q}<2{/Symbol \260}' "
+TITLE30  = "set title '{/Symbol q}<0.5{/Symbol \260}' "
+TITLE01  = "set title ''"
+TITLE11  = "set title ''"
+TITLE21  = "set title ''"
+TITLE31  = "set title ''"
+# x- and ytics for each row resp. column
+NOXTICS = "set format x '' ; unset xlabel"
+XTICS = "set format x '%.0f'; set xtics rotate ; set xlabel 'E [MeV/nucleon]' "
+NOYTICS = "set format y ''; unset ylabel"
+YTICS = "set format y '%.0f'; set ylabel 'dN/dE [arb. units]'"
+
+set multiplot
+unset key
+
+@MARGIN00
+@NOXTICS; @YTICS
+@TITLE00
+plot "a12.7-w3-n035-H-CP/Prpout05_Espec.txt" u (($1+$2)/2):3  w l ls 5
+		 
+@MARGIN01
+@XTICS; @YTICS
+@TITLE01
+plot "a12.7-w3-n035-H-LP/Prpout05_Espec.txt" u (($1+$2)/2):3  w l ls 5
+
+@MARGIN10
+@NOXTICS; @NOYTICS
+@TITLE10
+plot "a12.7-w3-n035-H-CP/Prpout05_Espec_theta5.txt" u (($1+$2)/2):3  w l ls 5
+
+@MARGIN11
+@XTICS; @NOYTICS
+@TITLE11
+plot "a12.7-w3-n035-H-LP/Prpout05_Espec_theta5.txt" u (($1+$2)/2):3  w l ls 5
+
+
+@MARGIN20
+@NOXTICS; @NOYTICS
+@TITLE20
+plot "a12.7-w3-n035-H-CP/Prpout05_Espec_theta2.txt" u (($1+$2)/2):3  w l ls 5
+		 
+@MARGIN21
+@XTICS; @NOYTICS
+@TITLE21
+plot "a12.7-w3-n035-H-LP/Prpout05_Espec_theta2.txt" u (($1+$2)/2):3  w l ls 5
+
+@MARGIN30
+@NOXTICS; @NOYTICS
+@TITLE30
+set key
+plot "a12.7-w3-n035-H-CP/Prpout05_Espec_theta0.5.txt" u (($1+$2)/2):3  w l ls 5 t 'H'
+		 
+@MARGIN31
+@XTICS; @NOYTICS
+@TITLE31
+unset key
+plot "a12.7-w3-n035-H-LP/Prpout05_Espec_theta0.5.txt" u (($1+$2)/2):3  w l ls 5
+
+
+
+
+unset multiplot

@@ -1,0 +1,76 @@
+FILE_OUT='slabGeometry-YZ-3D-CPLP-a198-Ctarget.tex'
+set terminal epslatex size 11cm,8cm color colortext standalone header \
+   "\\newcommand{\\ft}[0]{\\footnotesize}"
+set output FILE_OUT
+set cbrange [0:12]
+set xrange [0:5]
+set yrange [0:5]
+set xtics 1
+set ytics 1
+
+set label 5 at screen 0.1,0.65 left '{\Large CP}' font "Helvetica,24" front
+set label 4 at screen 0.68,0.65 left '{\Large LP}' font "Helvetica,24" front
+
+set size square
+set size 1.3,0.7
+
+# Enable the use of macros
+set macros
+load "/home/sgatto/SORGENTI/gnuplot-colorbrewer/sequential/YlGnBu.plt"
+
+MARGIN00 = "set origin 0.14,0.14; set size 0.5,0.5; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+MARGIN10 = "set origin 0.76,0.14; set size 0.5,0.5; set tmargin 0.00; set bmargin 0.1; set lmargin 0.1; set rmargin 0.00"
+
+TITLE00  = "set title ''"
+TITLE10  = "set title ''"
+TITLE01  = "set title ''"
+TITLE11  = "set title ''"
+# x- and ytics for each row resp. column
+NOXTICS = "set format x '' ; unset xlabel"
+XTICS = "set format x '%.1f'; set xlabel '$\\tan(\\theta_y)$' offset 0,0.3 "
+NOYTICS = "set format y ''; unset ylabel"
+YTICS = "set format y '%.1f'; set ylabel '$\\tan(\\theta_z)$' offset 2.0"
+
+set multiplot
+unset key
+unset colorbox
+
+
+NOXTICS = "set format x '' ; unset xlabel"
+XTICS = "set format x '%.0f'; set xlabel '$y/\\lambda$' offset 0,0.3"
+NOYTICS = "set format y ''; unset ylabel"
+YTICS = "set format y '%.0f'; set ylabel '$z/\\lambda$' offset 1."
+NOXTICS = "set format x '' ; unset xlabel"
+XTICS = "set xlabel '$y/\\lambda$' offset 0,0.3"
+NOYTICS = "set format y ''; unset ylabel"
+YTICS = "; set ylabel '$z/\\lambda$' offset 1."
+
+const=1.1e-1
+num2phys=57287
+
+@XTICS;@YTICS
+@MARGIN00
+@TITLE00
+#set colorbox
+
+plot "./DENS_ION1_015.000.binintegratedXCP.txt" u ($1+2.5):($2+2.5):($3*const)  w image
+
+
+set colorbox
+#@PRCFNEW1
+#set format cb '$%.0t\cdot10^{%.2T}$'
+set cbtics 4 offset -0.6
+set cblabel '$[10^{10}\,$part.$/\lambda^2]$' offset -0.3
+@XTICS;@YTICS
+@MARGIN10
+@TITLE10
+
+plot "./DENS_ION1_015.000.binintegratedXLP.txt" u ($1+2.5):($2+2.5):($3*const)  w image
+
+
+
+
+
+
+
+unset multiplot
